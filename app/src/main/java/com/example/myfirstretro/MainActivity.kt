@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         val intr = RetroApiInterface.create()
         val repo = BookRepository(intr)
         vm = BookViewModel(repo)
-
+        println("Inside Main")
         vm.bookList.observe(this) {
             //update your view
                 // attach to rcycler vieww adapter
@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         vm.getAllBooks()
+
+        //we need to call create books here
+
 
 //        val api = RetroApiInterface.retro.create().getAllBooks()
 //
