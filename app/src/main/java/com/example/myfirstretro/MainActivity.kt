@@ -2,9 +2,15 @@ package com.example.myfirstretro
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,8 +35,24 @@ class MainActivity : AppCompatActivity() {
         vm.getAllBooks()
 
         //we need to call create books here
+// 1. Form with all the fields from the entity  - done
+//2. when user submits it get all the filled data -
+//  create a jsonObject/Gson using the data filled
+//3. convert that json to string .toString
+//4. convert the string to .toRequestBody
+        val obj = JSONObject()
+        obj.put("id",11)
+        obj.put("name","Dinesh")
+        obj.put("username","dinesh")
+        obj.put("email","dinesh@d.com")
+
+        val objStr = obj.toString()
+//        val requestBody = RequestBody.create("application/json; charset=utf-8".toMediaTypeOrNull(), objStr)
 
 
+        val requestBody = objStr.toRequestBody("application/json".toMediaTypeOrNull())
+
+        vm.createUsers(requestBody)
 //        val api = RetroApiInterface.retro.create().getAllBooks()
 //
 //        api.enqueue(object : Callback<List<Books>>{

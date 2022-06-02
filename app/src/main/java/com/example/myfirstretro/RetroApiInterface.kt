@@ -21,13 +21,16 @@ interface RetroApiInterface {
     @GET("books.json")
     suspend fun getAllBooks(): Response<List<Books>>
 
-    @POST("/post")
-    suspend fun createBooks(@Body requestBody: RequestBody): Response<ResponseBody>
+    @GET("users")
+    suspend fun getAllUsers(): Response<List<Users>>
+
+    @POST("users")
+    suspend fun createUsers(@Body requestBody: RequestBody): Response<ResponseBody>
 
 //    @POST()
 /// https://thapasabiran.github.io/Data/books.json
     companion object {
-        var BASE_URL = "https://thapasabiran.github.io/Data/"
+        var BASE_URL = "https://jsonplaceholder.typicode.com/"
         fun create() : RetroApiInterface {
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())

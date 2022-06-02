@@ -12,6 +12,9 @@ var description : String,
 var website : String)
 
 
+
+
+
 //1. Form with all the fields from the entity  - done
 //2. when user submits it get all the filled data -
 //  create a jsonObject/Gson using the data filled
