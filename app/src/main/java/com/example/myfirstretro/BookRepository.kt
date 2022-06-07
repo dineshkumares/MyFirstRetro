@@ -23,6 +23,10 @@ class BookRepository(val inter : RetroApiInterface, private val dao: RecipeDao) 
 
     fun getAllRecipeFromDb():Observable<List<Recipe>> {
         return dao.selectRecipes()
+//            .filter { it.isNotEmpty() }
+//            .doOnNext {
+//                // here is where we can add logging so its useful for debugging
+//            }
     }
 
 }
