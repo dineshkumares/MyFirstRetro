@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val intr = RetroApiInterface.create()
-        val repo = BookRepository(intr)
+        val dao = AppDatabase.getInstance(this)?.recipeDao()!!
+        val repo = BookRepository(intr, dao)
         vm = BookViewModel(repo)
         println("Inside Main")
 //        vm.bookList.observe(this) {

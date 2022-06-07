@@ -1,9 +1,15 @@
 package com.example.myfirstretro
 
-data class Recipe(val id: Int,
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "recipe")
+data class Recipe(
+    @PrimaryKey
+    val id: Int,
     val title: String,
-val yield: String,
-val prepTime: String,
-val totalTime: String,
-val ingredients: String,
-val directions: String)
+    val yield: String,
+    val prepTime: String,
+    val totalTime: String,
+    val ingredients: String,
+    val directions: String)
