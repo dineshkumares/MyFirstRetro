@@ -2,6 +2,9 @@ package com.example.myfirstretro
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.kotlin.subscribeBy
+import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import org.json.JSONObject
@@ -23,16 +26,35 @@ class MainActivity : AppCompatActivity() {
         val repo = BookRepository(intr)
         vm = BookViewModel(repo)
         println("Inside Main")
-        vm.bookList.observe(this) {
-            //update your view
-                // attach to rcycler vieww adapter
-//                adapter.setBookList(it)
-            println(it) // this will print the list of books
+//        vm.bookList.observe(this) {
+//            //update your view
+//                // attach to rcycler vieww adapter
+////                adapter.setBookList(it)
+//            println(it) // this will print the list of books
+//
+//
+//        }
 
+//        vm.getAllBooks()
 
-        }
+        vm.getAllApiRecipe()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onNext = {
+                    item -> println("My Observable user list $item")
+                },
+                onError = {e -> println("this is the error $e")}
+            )
 
-        vm.getAllBooks()
+        //ApiInterface 1. add a function to your ApiInterface getAllApiBooks() Observable<List<Books>>
+        //Repo 2. create a function getAllApiBooks : Observable<List<Books>> return
+        //VM 3. Create a function getAllApiBooks Observable<List<Books>>
+        //if you want to map do it here
+        //View 4. use the view model and call getAllApiBooks
+        // subscribeon Schedulers.io
+        //observeon
+        //.subscibe
 
         //we need to call create books here
 // 1. Form with all the fields from the entity  - done
@@ -52,7 +74,7 @@ class MainActivity : AppCompatActivity() {
 
         val requestBody = objStr.toRequestBody("application/json".toMediaTypeOrNull())
 
-        vm.createUsers(requestBody)
+//        vm.createUsers(requestBody)
 //        val api = RetroApiInterface.retro.create().getAllBooks()
 //
 //        api.enqueue(object : Callback<List<Books>>{
