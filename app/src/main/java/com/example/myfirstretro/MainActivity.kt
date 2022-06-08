@@ -18,6 +18,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 class MainActivity : AppCompatActivity() {
 
     lateinit var vm : BookViewModel
+    var recipeList  = ArrayList<Recipe>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -43,7 +44,11 @@ class MainActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onNext = {
-                    item -> println("My Observable user list $item")
+//                    addToRecipeList(it)
+                    recipeList.addAll(it)
+                },
+                onComplete ={
+                    println(recipeList) // adapter
                 },
                 onError = {e -> println("this is the error $e")}
             )
@@ -64,17 +69,31 @@ class MainActivity : AppCompatActivity() {
 //3. convert that json to string .toString
 //4. convert the string to .toRequestBody
         val obj = JSONObject()
-        obj.put("id",11)
-        obj.put("name","Dinesh")
-        obj.put("username","dinesh")
-        obj.put("email","dinesh@d.com")
+        obj.put("id",110)
+        obj.put("title","Chicken Soup")
+        obj.put("yield","6 servings")
+        obj.put("prepTime","10 mins")
+        obj.put("totalTime","1hr 40 mins")
+        obj.put("ingredients","1 whole chicken (about 4 pounds), cut into pieces (including back)")
+        obj.put("directions","Step 1: Bring chicken, water, and 1 tablespoon salt to a boil in a large stockpot. Skim foam. Add onions, celery, and garlic. Reduce heat. Simmer, partially covered, for 30 minutes.")
 
-        val objStr = obj.toString()
+        var myRecipe = Recipe(
+            370,
+            "Goat Soup",
+            "6 servings",
+            "10 mins",
+            "1hr 40 mins",
+            "1 whole chicken (about 4 pounds), cut into pieces (including back)",
+            "Step 1: Bring chicken, water, and 1 tablespoon salt to a boil in a large stockpot. Skim foam. Add onions, celery, and garlic. Reduce heat. Simmer, partially covered, for 30 minutes."
+        )
+
+//        val objStr = obj.toString()
 //        val requestBody = RequestBody.create("application/json; charset=utf-8".toMediaTypeOrNull(), objStr)
 
 
-        val requestBody = objStr.toRequestBody("application/json".toMediaTypeOrNull())
+//        val requestBody = objStr.toRequestBody("application/json".toMediaTypeOrNull())
 
+        vm.insertRecipe(myRecipe)
 //        vm.createUsers(requestBody)
 //        val api = RetroApiInterface.retro.create().getAllBooks()
 //
@@ -88,6 +107,11 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        })
 
+    }
+
+    fun addToRecipeList(_recipeList: List<Recipe>) {
+        println("every item is :::$_recipeList")
+        recipeList.addAll(_recipeList)
     }
 }
 

@@ -14,19 +14,19 @@ import okhttp3.RequestBody
 
 class BookViewModel(val repo: BookRepository) : ViewModel() {
 
-    var bookList = MutableLiveData<List<Books>>()
-    var userList = MutableLiveData<List<Users>>()
+//    var bookList = MutableLiveData<List<Books>>()
+//    var userList = MutableLiveData<List<Users>>()
 //    var job: Job? =null
 
-    fun getAllBooks() {
-        CoroutineScope(Dispatchers.IO).launch {
-            var res = repo.getAllBooks()
-            if(res.isSuccessful) {
-                bookList.postValue(res.body())
-            }
-
-        }
-    }
+//    fun getAllBooks() {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            var res = repo.getAllBooks()
+//            if(res.isSuccessful) {
+//                bookList.postValue(res.body())
+//            }
+//
+//        }
+//    }
 
     //3. Create a function getAllApiBooks Observable<List<Books>>
     //if you want to map do it here
@@ -35,38 +35,42 @@ class BookViewModel(val repo: BookRepository) : ViewModel() {
         return repo.getAllApiRecipe()
     }
 
-
-    fun getAllUsers() {
-        CoroutineScope(Dispatchers.IO).launch {
-            var res = repo.getAllUsers()
-            if(res.isSuccessful) {
-                userList.postValue(res.body())
-            }
-
-        }
+    fun insertRecipe(recipe: Recipe) {
+        repo.insertRecipe(recipe)
     }
 
+//
+//    fun getAllUsers() {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            var res = repo.getAllUsers()
+//            if(res.isSuccessful) {
+//                userList.postValue(res.body())
+//            }
+//
+//        }
+//    }
 
 
 
-    fun createUsers(requestBody: RequestBody) {
-        CoroutineScope(Dispatchers.IO).launch {
-            var res = repo.createUsers(requestBody)
-            if(res.isSuccessful) {
-                println("adsa")
-                println(res.body())
-                // res now is json
-                val gson = GsonBuilder().setPrettyPrinting().create()
-                val pJson = gson.toJson(
-                    JsonParser.parseString(
-                        res.body()?.string()
-                    )
-                )
-                println(pJson)
-            }
 
-        }
-    }
+//    fun createUsers(requestBody: RequestBody) {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            var res = repo.createUsers(requestBody)
+//            if(res.isSuccessful) {
+//                println("adsa")
+//                println(res.body())
+//                // res now is json
+//                val gson = GsonBuilder().setPrettyPrinting().create()
+//                val pJson = gson.toJson(
+//                    JsonParser.parseString(
+//                        res.body()?.string()
+//                    )
+//                )
+//                println(pJson)
+//            }
+//
+//        }
+//    }
 
 
 

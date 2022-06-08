@@ -4,6 +4,7 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -20,7 +21,7 @@ interface RetroApiInterface {
     //1. add a function to your ApiInterface getAllApiBooks() Observable<List<Books>>
 
     @GET("posts")
-    fun getAllApiRecipe(): Observable<List<Recipe>>
+    fun getAllApiRecipe(): Single<List<Recipe>>
 
     //singleton
     @GET("books.json")
@@ -52,7 +53,7 @@ interface RetroApiInterface {
 //    @POST()
 /// https://thapasabiran.github.io/Data/books.json
     companion object {
-        var BASE_URL = "https://f4ed-136-185-8-167.in.ngrok.io/ssblue18/"
+        var BASE_URL = "https://23d2-136-185-8-167.in.ngrok.io/ssblue18/"
         fun create() : RetroApiInterface {
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
