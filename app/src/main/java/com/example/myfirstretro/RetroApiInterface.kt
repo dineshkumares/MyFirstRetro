@@ -25,7 +25,7 @@ interface RetroApiInterface {
 
     //singleton
     @GET("books.json")
-    suspend fun getAllBooks(): Response<List<Books>>
+    fun getAllBooks(): Response<List<Books>>
 
 //    @PUT()
 

@@ -7,7 +7,7 @@ class BookRepository(val inter : RetroApiInterface, private val dao: RecipeDao) 
 
 //    var cachedUsers = emptyList<Recipe>()
 
-    suspend fun getAllBooks() = inter.getAllBooks()
+    fun getAllBooks() = inter.getAllBooks()
     suspend fun getAllUsers() = inter.getAllUsers()
     suspend fun createUsers(requestBody: RequestBody) = inter.createUsers(requestBody)
 
