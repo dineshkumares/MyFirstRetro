@@ -28,6 +28,8 @@ class BookViewModel(val repo: BookRepository) : ViewModel() {
 //        }
 //    }
 
+    //What is external
+
     //3. Create a function getAllApiBooks Observable<List<Books>>
     //if you want to map do it here
 
@@ -73,6 +75,10 @@ class BookViewModel(val repo: BookRepository) : ViewModel() {
 //    }
 
 
+//Types of Testing Frameworks
+
+//    1. Junit + Mockito   --> Unit Testing
+//     2. Espresso - UI Testing
 
 
 
