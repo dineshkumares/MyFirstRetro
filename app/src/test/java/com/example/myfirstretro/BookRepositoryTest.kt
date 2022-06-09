@@ -16,6 +16,7 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import retrofit2.Response
+import retrofit2.Response.*
 
 //2. Add class annotation @RunWith
 @RunWith(JUnit4::class)
@@ -78,7 +79,7 @@ class BookRepositoryTest {
         ))
         // mock the function call to the api
         Mockito.`when`(inter.getAllBooks())
-            .thenReturn(Response.success(fakeList))
+            .thenReturn(success(fakeList))
 
         var response = repo.getAllBooks()
 
@@ -95,7 +96,7 @@ class BookRepositoryTest {
             ))
             // mock the function call to the api
             Mockito.`when`(inter.getAllUsers())
-                .thenReturn(Response.success(fakeList))
+                .thenReturn(success(fakeList))
 
             var response = repo.getAllUsers()
 

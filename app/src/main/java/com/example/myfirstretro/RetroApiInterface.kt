@@ -23,6 +23,7 @@ interface RetroApiInterface {
     @GET("posts")
     fun getAllApiRecipe(): Single<List<Recipe>>
 
+
     //singleton
     @GET("books.json")
     fun getAllBooks(): Response<List<Books>>

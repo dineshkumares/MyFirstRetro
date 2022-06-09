@@ -18,20 +18,20 @@ class ExampleUnitTest {
         assertEquals(4, 2 + 2)
 
     }
-    @Before
-    fun addition_isCorrectBefore(){
-
-    }
-    @BeforeClass()
-    fun b4claSS(){
-
-    }
-    @After()
-    fun atAfter() {
-
-    }
-    @AfterClass()
-    fun afterClass(){
-
-    }
+//    @Before
+//    fun addition_isCorrectBefore(){
+//
+//    }
+//    @BeforeClass()
+//    fun b4claSS(){
+//
+//    }
+//    @After()
+//    fun atAfter() {
+//
+//    }
+//    @AfterClass()
+//    fun afterClass(){
+//
+//    }
 }

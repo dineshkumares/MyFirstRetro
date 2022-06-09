@@ -55,24 +55,24 @@ class BookViewModel(val repo: BookRepository) : ViewModel() {
 
 
 
-//    fun createUsers(requestBody: RequestBody) {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            var res = repo.createUsers(requestBody)
-//            if(res.isSuccessful) {
-//                println("adsa")
-//                println(res.body())
-//                // res now is json
-//                val gson = GsonBuilder().setPrettyPrinting().create()
-//                val pJson = gson.toJson(
-//                    JsonParser.parseString(
-//                        res.body()?.string()
-//                    )
-//                )
-//                println(pJson)
-//            }
-//
-//        }
-//    }
+    fun createUsers(requestBody: RequestBody) {
+        CoroutineScope(Dispatchers.IO).launch {
+            var res = repo.createUsers(requestBody)
+            if(res.isSuccessful) {
+                println("adsa")
+                println(res.body())
+                // res now is json
+                val gson = GsonBuilder().setPrettyPrinting().create()
+                val pJson = gson.toJson(
+                    JsonParser.parseString(
+                        res.body()?.string()
+                    )
+                )
+                println(pJson)
+            }
+
+        }
+    }
 
 
 //Types of Testing Frameworks
