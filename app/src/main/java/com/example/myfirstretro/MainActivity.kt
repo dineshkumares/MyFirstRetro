@@ -26,10 +26,18 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var vm : BookViewModel
     var recipeList  = ArrayList<Recipe>()
-    var isDebugMode = "prod"
+    var isDebugMode = "dev"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        Timber.plant(Timber.DebugTree())
+
+        Timber.d("timber inside main activity")
+//        Timber.i
+//        Timber.v
+//        Timber.w
+           // interceptor
+
 
         println("Inside Main activity create fun")
         //Logcat

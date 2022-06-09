@@ -4,7 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverter
+
 //1 -  annotation       //2 - entities
+
 @Database(entities = [Recipe::class], version = 1, exportSchema = false)
 //3 - abstract and extend
 abstract class AppDatabase : RoomDatabase(){

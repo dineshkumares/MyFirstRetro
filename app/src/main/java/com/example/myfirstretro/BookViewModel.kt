@@ -1,5 +1,7 @@
 package com.example.myfirstretro
 
+import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 //import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import okhttp3.RequestBody
+import timber.log.Timber
 
 class BookViewModel(val repo: BookRepository) : ViewModel() {
 
@@ -34,6 +37,10 @@ class BookViewModel(val repo: BookRepository) : ViewModel() {
     //if you want to map do it here
 
     fun getAllApiRecipe():Observable<List<Recipe>> {
+        //try catch
+        //logger
+        Timber.d("timber inside view model")
+        Timber.e("timber inside view model error")
         return repo.getAllApiRecipe()
     }
 
@@ -60,6 +67,10 @@ class BookViewModel(val repo: BookRepository) : ViewModel() {
             var res = repo.createUsers(requestBody)
             if(res.isSuccessful) {
                 println("adsa")
+
+//                if(isDebugMode == "dev") {
+//                    Log.d("debug", "this is the response $res")
+//                }
                 println(res.body())
                 // res now is json
                 val gson = GsonBuilder().setPrettyPrinting().create()

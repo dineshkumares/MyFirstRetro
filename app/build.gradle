@@ -85,7 +85,7 @@ dependencies {
 //    // Optional -- Mockk framework
 //    testImplementation "io.mockk:mockk:$mockkVersion"
 
-
+    implementation 'com.jakewharton.timber:timber:5.0.1'
 
 
 }
