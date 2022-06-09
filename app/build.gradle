@@ -84,7 +84,7 @@ dependencies {
 //    testImplementation "org.mockito.kotlin:mockito-kotlin:4.6.1"
 //    // Optional -- Mockk framework
 //    testImplementation "io.mockk:mockk:$mockkVersion"
-
+    //1. Add the dependency
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
 
