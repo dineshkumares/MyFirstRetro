@@ -63,15 +63,36 @@ class BookViewModelTest {
 
 
         val result = vm.getAllApiRecipe()
+        var actuals = listOf<Recipe>()
 
-        result.subscribeBy(
-            onNext = {
-                assertEquals(listOf<Recipe>(
+        result.test()
+            .assertResult(
+                listOf<Recipe>(
                     Recipe(234,"fromtest","","","","","")
-                ),it)
-        },
-            onError = { println("error :$it")}
-        )
+                )
+            )
+
+//        result.doOnNext {
+//            actuals = it
+//            assertEquals("sadsdaa", listOf<Recipe>(
+//                Recipe(234,"fromtest","","","","","")
+//            ))
+//        }
+
+
+
+
+
+
+
+//        result.subscribeBy(
+//            onNext = {
+//                assertEquals(listOf<Recipe>(
+//                    Recipe(234,"fromtest","","","","","")
+//                ),"sdfdsfss")
+//        },
+//            onError = { assert(false)}
+//        )
 
 //        val result = vm.getAllApiRecipe().subscribe(recipeList)
 //
